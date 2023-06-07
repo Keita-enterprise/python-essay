@@ -25,29 +25,4 @@
         docker build -t pysecond2 . 
 3 - Create a ConfigMap in your Kubernetes cluster
      cd 
-4 - Deploy your Flask application container
-                apiVersion: apps/v1
-                kind: Deployment
-                metadata:
-                  name: flask-app
-                spec:
-                  replicas: 1
-                  selector:
-                    matchLabels:
-                      app: flask-app
-                  template:
-                    metadata:
-                      labels:
-                        app: flask-app
-                    spec:
-                      containers:
-                        - name: flask-app
-                          image: pysecond2 
-                          ports:
-                            - containerPort: 5000
-                          envFrom:
-                            - configMapRef:
-                                name:  pyassignment
-5 -  Apply the ConfigMap and deployment YAML files using the kubectl apply
-      kubectl apply -f configmap.yaml
-      kubectl apply -f deployment.yaml
+
