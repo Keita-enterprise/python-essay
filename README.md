@@ -1,5 +1,5 @@
 1 - Write Dockerfile 
-# Use the official Python base image
+
         FROM python:3.9
 
         # Set the working directory inside the container
