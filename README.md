@@ -25,16 +25,16 @@
         docker build -t pysecond2 . 
 
 3 -  Create a ConfigMap in your Kubernetes cluster
-        apiVersion: v1
-        kind: ConfigMap
-        metadata:
-          name: flask-db-config
-        data:
-          DB_USER: your_db_user
-          DB_PASSWORD: your_db_password
-          DB_NAME: your_db_name
-          DB_HOST: your_db_host
-          DB_PORT: "your_db_port"
+                apiVersion: v1
+                kind: ConfigMap
+                metadata:
+                  name: flask-db-config
+                data:
+                  DB_USER: your_db_user
+                  DB_PASSWORD: your_db_password
+                  DB_NAME: your_db_name
+                  DB_HOST: your_db_host
+                  DB_PORT: "your_db_port"
 
   4 - Deploy your Flask application container
                 apiVersion: apps/v1
