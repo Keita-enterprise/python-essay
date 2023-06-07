@@ -35,5 +35,29 @@
           DB_NAME: your_db_name
           DB_HOST: your_db_host
           DB_PORT: "your_db_port"
+3 - Deploy your Flask application
+                apiVersion: apps/v1
+                kind: Deployment
+                metadata:
+                  name: flask-app
+                spec:
+                  replicas: 1
+                  selector:
+                    matchLabels:
+                      app: flask-app
+                  template:
+                    metadata:
+                      labels:
+                        app: flask-app
+                    spec:
+                      containers:
+                        - name: flask-app
+                          image: your-flask-app-image
+                          ports:
+                            - containerPort: 5000
+                          envFrom:
+                            - configMapRef:
+                                name: flask-db-config
+
 
 
