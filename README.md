@@ -64,7 +64,7 @@
                           envFrom:
                             - configMapRef:
                                 name: myapp
-    4 -Create service 
+  6 -Create service 
                 
         apiVersion: v1
         kind: Service
