@@ -28,7 +28,7 @@
         apiVersion: v1
         kind: ConfigMap
         metadata:
-          name: flask-db-config
+          name: myapp
         data:
           DB_USER: your_db_user
           DB_PASSWORD: your_db_password
@@ -53,12 +53,12 @@
                     spec:
                       containers:
                         - name: flask-app
-                          image: your-flask-app-image
+                          image: pysecond2
                           ports:
                             - containerPort: 5000
                           envFrom:
                             - configMapRef:
-                                name: flask-db-config
+                                name: myapp
 
           
    
