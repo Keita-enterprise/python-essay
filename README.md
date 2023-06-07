@@ -1,35 +1,60 @@
-# Plotly DevOps Homework Assignment
+1 - Write Dockerfile 
+# Use the official Python base image
+        FROM python:3.9
 
-## Goal
+        # Set the working directory inside the container
+        WORKDIR /app
 
-Your goal is to show how you would build, and deploy the included application
-using Kubernetes .
+        # Copy the requirements file to the working directory
+        COPY requirements.txt .
 
-## Assignment
+        # Install the Python dependencies
+        RUN pip install -r requirements.txt
 
-Your task is to accomplish the following:
+        # Copy the application code to the working directory
+        COPY . .
 
-- Build a small Kubernetes test cluster either locally or in the cloud. A single
-  node is fine. Feel free to use Terraform with a cloud provider or an
-  all-in-one tool for a local cluster (minikube, microk8s, or k3d)
-- Build Docker file for the sample application
-- Build a deployment mechanism for the app
-- Describe a plan for continuous delivery with the specific tools/vendors you'd
-  look at and your evaluation criteria for them
+        # Expose the port on which the Flask app will run
+        EXPOSE 5000
 
-## Deliverables
-
-We'd like to see a repo with the following:
-
-- A Dockerfile for the application
-- Repeatable deployment mechanism for the application
-- A README with the set-up process so we can run it ourselves
-- A text file with a BRIEF write-up about the following:
-  - Continuous Delivery plan for the app ecosystem
-  
-## Notes
-
-- Please do not fork or submit a PR to this repo
-- If you get stuck or need more information, please reach out for clarity
-- Have fun!
-
+        # Set the command to run the Flask application
+        CMD ["python", "app.py"]
+2 - Build the docker image 
+     docker build -t pysecond2 . 
+3 -  Create a ConfigMap in your Kubernetes cluster
+         apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: pyassignment
+        data:
+          DB_USER: your_db_user
+          DB_PASSWORD: your_db_password
+          DB_NAME: your_db_name
+          DB_HOST: your_db_host
+          DB_PORT: "your_db_port"
+  4 - Deploy your Flask application container
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: flask-app
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: flask-app
+          template:
+            metadata:
+              labels:
+                app: flask-app
+            spec:
+              containers:
+                - name: flask-app
+                  image: pysecond2 
+                  ports:
+                    - containerPort: 5000
+                  envFrom:
+                    - configMapRef:
+                        name:  pyassignment
+5 -  Apply the ConfigMap and deployment YAML files using the kubectl apply
+       kubectl apply -f configmap.yaml
+      kubectl apply -f deployment.yaml
