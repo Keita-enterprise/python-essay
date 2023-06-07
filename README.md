@@ -24,5 +24,5 @@
                 
         docker build -t pysecond2 . 
 3 - Create a ConfigMap in your Kubernetes cluster
-     cd 
+                cd 
 
