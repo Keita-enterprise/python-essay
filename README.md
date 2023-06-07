@@ -23,7 +23,7 @@
 2 - Build the docker image 
                 
         docker build -t pysecond2 .
-2 - Build the docker image 
+2 -Create a ConfigMap
                 
         docker build -t pysecond2 .
 
