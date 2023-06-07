@@ -64,6 +64,20 @@
                           envFrom:
                             - configMapRef:
                                 name: myapp
+  6 - Create service 
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: flask-service
+        spec:
+          selector:
+            app: flask-app
+          ports:
+            - protocol: TCP
+              port: 80
+              targetPort: 5000
+          type: LoadBalancer
+
 
           
    
