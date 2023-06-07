@@ -35,7 +35,7 @@
           DB_NAME: your_db_name
           DB_HOST: your_db_host
           DB_PORT: "your_db_port"
-  2 -Create a ConfigMap
+  2 -Deploy your Flask application
                 
                 apiVersion: apps/v1
                 kind: Deployment
