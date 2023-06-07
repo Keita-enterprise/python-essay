@@ -25,7 +25,7 @@
         docker build -t pysecond2 . 
 3 - Create a ConfigMap in your Kubernetes cluster
      cd 
-  4 - Deploy your Flask application container
+4 - Deploy your Flask application container
                 apiVersion: apps/v1
                 kind: Deployment
                 metadata:
