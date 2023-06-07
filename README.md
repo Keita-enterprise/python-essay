@@ -40,7 +40,7 @@
           DB_NAME: your_db_name
           DB_HOST: your_db_host
           DB_PORT: "your_db_port"
-  5 -Deploy your Flask application
+  5 -Deploy your application
                 
                 apiVersion: apps/v1
                 kind: Deployment
