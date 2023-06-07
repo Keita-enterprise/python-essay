@@ -64,20 +64,16 @@
                           envFrom:
                             - configMapRef:
                                 name: myapp
-  6 - Create service 
+    4 -Create a ConfigMap
+                
         apiVersion: v1
-        kind: Service
+        kind: ConfigMap
         metadata:
-          name: flask-service
-        spec:
-          selector:
-            app: flask-app
-          ports:
-            - protocol: TCP
-              port: 80
-              targetPort: 5000
-          type: LoadBalancer
-
-
-          
-   
+          name: myapp
+        data:
+          DB_USER: your_db_user
+          DB_PASSWORD: your_db_password
+          DB_NAME: your_db_name
+          DB_HOST: your_db_host
+          DB_PORT: "your_db_port"
+ 
