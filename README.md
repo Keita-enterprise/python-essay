@@ -19,8 +19,10 @@
 
         # Set the command to run the Flask application
         CMD ["python", "app.py"]
+        
 2 - Build the docker image 
-                docker build -t pysecond2 . 
+                
+        docker build -t pysecond2 . 
 
 3 -  Create a ConfigMap in your Kubernetes cluster
                 apiVersion: v1
