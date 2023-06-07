@@ -22,8 +22,13 @@
         
 2 - Build the docker image 
                 
-        docker build -t pysecond2 .
-2 -Create a ConfigMap
+        docker build -t pysecond .
+3 - Create a repo in dockerhub 
+     12bk/pyapp
+# Create a tag 
+  docker tag pysecond 12bk/pyapp
+   docker push 12bk/pyapp
+4 -Create a ConfigMap
                 
         apiVersion: v1
         kind: ConfigMap
@@ -35,7 +40,7 @@
           DB_NAME: your_db_name
           DB_HOST: your_db_host
           DB_PORT: "your_db_port"
-  2 -Deploy your Flask application
+  5 -Deploy your Flask application
                 
                 apiVersion: apps/v1
                 kind: Deployment
@@ -53,7 +58,7 @@
                     spec:
                       containers:
                         - name: flask-app
-                          image: pysecond2
+                          image: 12bk/pyapp
                           ports:
                             - containerPort: 5000
                           envFrom:
